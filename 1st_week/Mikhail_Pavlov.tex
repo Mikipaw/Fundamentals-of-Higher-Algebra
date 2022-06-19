@@ -1,0 +1,150 @@
+\documentclass[12pt, a4paper]{article}
+
+% Ru lang stuff
+\usepackage [utf8x] {inputenc}
+\usepackage [T2A] {fontenc}
+
+% running titles 
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+
+% for last page number
+\usepackage{lastpage}
+
+%for colored tablets cells
+\usepackage{colortbl}
+
+% for Ru text in formulas
+\usepackage[warn]{mathtext}
+
+% for captions 
+\usepackage[labelsep=period]{caption}
+\usepackage{capt-of}
+
+% for colored hyperrefs
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% for pictures 
+\usepackage{graphicx}
+
+% for coll math
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% path to all pictures
+\graphicspath{{picks/}}
+
+% for enumerates
+\usepackage[shortlabels]{enumitem}
+
+% for diff running titles on pages with diff parity
+\usepackage{ifthen}
+\usepackage{pdfpages}
+\usepackage[strict]{changepage}
+
+%for drawings
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+% for good text in tablets
+\usepackage{array}
+
+% upgrading tables
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+
+% dock fields 20 15 15 35
+\usepackage[left=12mm, top=12mm, right=15mm, bottom=28mm, nohead, footskip=10mm]{geometry}
+
+% for cool tables
+\usepackage{multirow}
+
+% for different section/subsection/subsubsection styles in contents and doc
+\usepackage[english, russian]{babel}
+
+\usepackage{amsmath}
+
+% for cool tables
+\usepackage{tabularx}
+
+\title{Homework 1}
+\author{Mikhail Pavlov \thanks{MIPT}}
+\date{Febrary, 2022}
+\begin{document}
+
+\section*{Task 1}
+
+\begin{proof}
+    Рассмотрим такие числа $a$ и $b$, что $b = a^{-1}$ и $b \cdot a = e$. (такое число $b$ найдется для любого $a$ по условию)
+
+    Аналогично запишем для $b$, т.е. найдется $c = b^{-1} : c \cdot b = e$. 
+
+    Далее получаем:
+
+    \begin{equation*}
+        \begin{cases}
+            c \cdot (b \cdot a) = c \cdot e \\
+            (c \cdot b) \cdot a = e \cdot a    
+        \end{cases}
+    \end{equation*}
+    
+    По 1-ому свойству моноида $c \cdot (b \cdot a) = (c \cdot b) \cdot a$, откуда следует, что $c \cdot e = e \cdot a$.
+
+    Далее, воспользовавшись 2-ым свойством моноида, получаем $c = a$, откуда $a \cdot b = b \cdot a = e$, где $b = a^{-1}$,
+    что является 3-им свойством группы.
+\end{proof}
+
+\section*{Task 2}
+
+Таблица Кэли для группы G порядка 4:
+
+\begin{center}
+    \begin{tabular}{ | c | c | c | c | c | }
+        \hline
+        . & e & a & b & c \\ \hline
+        e & e & a & b & c \\ \hline
+        a & a & e & c & b \\ \hline
+        b & b & c & e & a \\ \hline
+        c & c & b & a & e \\ \hline
+    \end{tabular}
+\end{center} 
+
+Явный пример группы: (Z/4Z, |-|), где бинарный оператор |-| работает следующим образом: x |-| y = |x - y| при x + y $\neq$ 3 и |x + y| при x + y = 3. 
+
+\begin{center}
+    \begin{tabular}{ | c | c | c | c | c | }
+        \hline
+        . & 0 & 1 & 2 & 3 \\ \hline
+        0 & 0 & 1 & 2 & 3 \\ \hline
+        1 & 1 & 0 & 3 & 2 \\ \hline
+        2 & 2 & 3 & 0 & 1 \\ \hline
+        3 & 3 & 2 & 1 & 0 \\ \hline
+    \end{tabular}
+\end{center} 
+
+\section*{Task 3}
+
+    Ответ: нет, не образует, т.к. не выполнено 2-ое свойство группы.
+
+\section*{Task 4}
+
+\begin{proof}
+    
+    1) Начнем с простого: из курса линейной алгебры нам известно, что произведение матриц ассоциативно,
+    значит, первое свойство выполняется.
+
+    2) Второе свойство тоже очевидно и следует непосредственно из существования единичной матрицы размера $n$.
+
+    3) Сначала стоит вспомнить тот факт, что произведение верхней треугольной матрицы на другую верхнюю треугольную матрицу дает в результате верхнюю треугольную матрицу
+    (в этом можно убедиться, если расписать матричное произведение: когда мы будем считать значения в ячейках нижнего треугольника, у нас в каждом слагаемом либо элемент из 1-ой матрицы будет нулевым, либо элемент из второй матрицы.
+    В результате получится сумма из $n$ нулей, которая, очевидно, в итоге даст 0).
+    Также стоит отметить, что обратная матрица всегда будет существовать, т.к. определитель любой матрицы из нашей группы ненулевой (равен 1).
+    Значит, 3-е свойство тоже выполнено.
+
+    Поскольку все три свойства выполняются, то рассматриваемое множество образует группу по операции матричного умножения.
+\end{proof}     
+
+\end{document}

@@ -1,0 +1,183 @@
+\documentclass[12pt, a4paper]{article}
+
+% Ru lang stuff
+\usepackage [utf8x] {inputenc}
+\usepackage [T2A] {fontenc}
+
+% running titles 
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+
+% for last page number
+\usepackage{lastpage}
+
+%for colored tablets cells
+\usepackage{colortbl}
+
+% for Ru text in formulas
+\usepackage[warn]{mathtext}
+
+% for captions 
+\usepackage[labelsep=period]{caption}
+\usepackage{capt-of}
+
+% for colored hyperrefs
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% for pictures 
+\usepackage{graphicx}
+
+% for coll math
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% path to all pictures
+\graphicspath{{picks/}}
+
+% for enumerates
+\usepackage[shortlabels]{enumitem}
+
+% for diff running titles on pages with diff parity
+\usepackage{ifthen}
+\usepackage{pdfpages}
+\usepackage[strict]{changepage}
+
+%for drawings
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+% for good text in tablets
+\usepackage{array}
+
+% upgrading tables
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+
+% dock fields 20 15 15 35
+\usepackage[left=12mm, top=12mm, right=15mm, bottom=28mm, nohead, footskip=10mm]{geometry}
+
+% for cool tables
+\usepackage{multirow}
+
+% for different section/subsection/subsubsection styles in contents and doc
+\usepackage[english, russian]{babel}
+
+\usepackage{amsmath}
+
+% for cool tables
+\usepackage{tabularx}
+
+\usepackage{fancyhdr,color}
+% page style setup (for running titles)
+\fancypagestyle{plain}{ %
+\fancyhf{} % remove everything
+
+ % lines parameters
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% running titles contents
+\lfoot{\textcolor{black!50}{Гущин Д. Д., Павлов М. А., МФТИ, ФПМИ}}
+\rfoot{\textcolor{black!50}{\thepage}}
+}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Пример}[section]
+\newtheorem{st}[ex]{Утверждение}
+
+\title{Homework 2}
+\author{Mikhail Pavlov \thanks{MIPT}}
+\date{Febrary, 2022}
+\begin{document}
+
+\section{}
+
+\begin{st}
+    В циклической группе конечного порядка всякая подгруппа является циклической.
+\end{st}
+
+\begin{proof}
+   
+    Рассмотрим группу $G$ : $a$ -- порождающий элемент, и подгруппу $H < G$ : $\exists k \text{(минимальное)} : a^k \in H$.
+    
+    Предположим, что в $H$ найдется также элемент $a^l$, где $l > k$ и $l$ не делится нацело на $k$.
+    
+    По аксиоме 3 группы $\exists a^{-k}$ и из замкнутости $a^{-k} \cdot a^{l} \in H$. В таком случае $a^{l (mod k)} \in H$, но $l (mod k) < k$, то есть мы пришли к противоречию, откуда следует, что $a^l$ не лежит в $H$.
+    
+    Таким образом, $a^k$ -- порождающий элемент циклической подгруппы $H$.
+
+\end{proof}
+
+\section{}
+
+Пусть $a_0$ -- порождающий элемент. Тогда $a = a_0^d$.
+
+В таком случае $a^k = (a_0^d)^k = a_0^{d \cdot k}$.
+
+Значит, порядок рассматриваемого нами элемента равен \textbf{$d \cdot k$}.
+
+\section{}
+
+Из теоремы Лагранжа следует, что подгруппами циклической группы $G$ порядка $n$ будут такие группы $H_1, ..., H_i, ...$, что $i | n$, т.е. все группы с порождающими элементами, равными целочисленным делителям числа $n$. 
+  
+
+\section{}
+
+\subsection{}
+
+Пусть $a$ -- порождающий элемент нашей группы $C_m$, а $a^q$ -- решение уравнения $x^k = e$ в данной группе.
+
+Обозначим  $d = $ НОД($m, k$).
+
+Тогда $(a^q)^k = e \Rightarrow m | kq \Rightarrow n | qd$.
+
+В итоге мы получаем $q = \frac{m}{d} \cdot l$, где $l \in \{0, 1,..., d - 1\}$.
+
+То есть количество решений равно $|\{0, 1,..., d - 1\}| = d$. 
+
+\subsection{}
+
+Мы имеем $(a^t)^10 = e$, где $a$ -- порождающий элемент группы $C_{100}$.
+
+$t = \frac{100}{10} \cdot i = 10 \cdot i,$ где $ i = \{0, 1,..., 9\}$. 
+
+\section{}
+
+\begin{proof}
+
+    Как мы выяснили в \textbf{Task 4}, количество решений уравнения в циклической группе равно НОД($m, k$). В нашем случае $m = 12, k$ -- какое-то число, очевидно, большее 12.
+
+    Какое бы число $k$ мы ни взяли, НОД($12, k) \leq 12 < 14$, значит, группа $G$ не является циклической.
+
+\end{proof}
+
+\section{}
+
+\subsection{}
+
+Проверим свойства подгруппы для $C(G)$:
+
+1) Верно, т.к. из аксиомы группы $\forall g \in G ge = eg$.
+
+2) Если $a, b \in C(G)$, то $\forall g g(ab) = gab = agb = (ab)g \Rightarrow ab \in C(G)$.  
+
+3) $gx = xg \Rightarrow x^{-1}gx = x^{-1}xg = g \Rightarrow x^{-1}gxx^{-1} = gx^{-1} \Rightarrow x^{-1}g = gx^{-1} \Rightarrow x^{-1} \in C(G)$.
+
+Все свойства выполнены, значит, $C(G)$ -- подгруппа $G$.
+
+\subsection{}
+
+Аналогично проверяем свойства:
+
+1) Верно (аналогично док-ву в пред. половине задания)
+
+2) Если $g_1, g_2 \in N(S)$, то $S(g_1g_2) = g_1Sg_2 = (g_1g_2)S$.
+
+3) $Sg = gS \Rightarrow S = Sgg^{-1} = gSg^{-1} \Rightarrow g^{-1}S = g^{-1}gSg^{-1} = Sg^{-1}$.
+
+Все свойства выполнены, значит, $N(S)$ -- подгруппа $G$.
+
+\end{document}

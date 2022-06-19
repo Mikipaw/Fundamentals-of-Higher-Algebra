@@ -1,0 +1,159 @@
+\documentclass[12pt, a4paper]{article}
+
+% Ru lang stuff
+\usepackage [utf8x] {inputenc}
+\usepackage [T2A] {fontenc}
+
+% running titles 
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+
+% for last page number
+\usepackage{lastpage}
+
+%for colored tablets cells
+\usepackage{colortbl}
+
+% for Ru text in formulas
+\usepackage[warn]{mathtext}
+
+% for captions 
+\usepackage[labelsep=period]{caption}
+\usepackage{capt-of}
+
+% for colored hyperrefs
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+% for pictures 
+\usepackage{graphicx}
+
+% for coll math
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+% path to all pictures
+\graphicspath{{picks/}}
+
+% for enumerates
+\usepackage[shortlabels]{enumitem}
+
+% for diff running titles on pages with diff parity
+\usepackage{ifthen}
+\usepackage{pdfpages}
+\usepackage[strict]{changepage}
+
+%for drawings
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+% for good text in tablets
+\usepackage{array}
+
+% upgrading tables
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+
+% dock fields 20 15 15 35
+\usepackage[left=12mm, top=12mm, right=15mm, bottom=28mm, nohead, footskip=10mm]{geometry}
+
+% for cool tables
+\usepackage{multirow}
+
+% for different section/subsection/subsubsection styles in contents and doc
+\usepackage[english, russian]{babel}
+
+\usepackage{amsmath}
+
+% for cool tables
+\usepackage{tabularx}
+
+\usepackage{fancyhdr,color}
+\usepackage{amssymb}
+% page style setup (for running titles)
+\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhead[C]{}
+\fancyhead[R]{\rightmark}
+\fancyfoot[L]{ОВАиТК, ФПМИ, МФТИ}
+\fancyfoot[C]{\textcopyright Павлов М.А.}
+\fancyfoot[R]{\thepage}
+
+\fancypagestyle{plain}{ %
+    \fancyhf{} % remove everything
+
+    % lines parameters
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+
+
+
+% running titles contents
+    \lfoot{\textcolor{black!50}{Павлов М. А.,}}
+    \rfoot{\textcolor{black!50}{\thepage}}
+}
+
+\newcommand{\sectionmark}[1]{\markboth
+{\uppercase{\thesection\hspace{1em}#1}}% левая пометка
+{\uppercase{\thesection\hspace{1em}#1}}% правая пометка
+}% конец макроопределения
+
+\theoremstyle{definition}
+\newtheorem{ex}{Пример}[section]
+\newtheorem{st}[ex]{Утверждение}
+
+\title{Homework 7}
+\author{Mikhail Pavlov \thanks{MIPT}}
+\date{March, 2022}
+\begin{document}
+
+    \section{Домашнее задание за 7-ую неделю}
+
+    \section*{Задание 1}
+
+        Приведем доказательство пункта 2, т.к. из него следует и первый:
+
+        2) Следует доказать, что группа порядка 15 является абелевой.
+
+        Докажем, что центр группы не тривиален (от противного):
+
+        Пусть он тривиален. Тогда $\exists x, y: 3x + 5y + 1 = 15 \Rightarrow x = 3, y = 1$ -- единственное решение из натуральных чисел.
+        Получается, у нас есть 3 орбиты из трех элементов и одна из пяти. То есть 5 элементов группы коммутирует с тремя элементами порядка 3.
+
+        Однако, если какой-то элемент $g$ коммутирует с тремя элементами, то и $g^2$ коммутирует с тремя элементами, откуда следует четность количества таких элементов.
+
+        Значит, центр группы нетривиален и элемент порядка 5 коммутирует с каким-то элементом порядка 3. Их произведение равно 15, из чего следует, что группа циклическая.
+        Кроме того, подгруппа $H$ порядка 5 лежит в центре. Но поскольку факторгруппа неабелевой группы по центру не может быть циклической, то мы получаем противоречие.
+
+        Тогда получается, что центр не совпадает с $H$, откуда следует, что он равен самой группе и в таком случае группа $G$ абелева.
+
+    \section*{Задание 2}
+
+        Нам необходимо найти различные раскраски $f: \{a, b, c, d\} \rightarrow \{1, 2\}$
+
+        Квадрат мы можем повернуть на $0, \frac{\phi}{2}, \phi$ и $\frac{3 \phi}{2}$.
+
+    \begin{center}
+        \begin{tabular}{ | c | c | }
+            \hline
+            $S_4$ & кол-во  \\ \hline
+            () & 1  \\ \hline
+            (2) & 2  \\ \hline
+            (2)(2) & 1  \\ \hline
+            (4) & 1  \\ \hline
+        \end{tabular}
+    \end{center}
+
+    Всего возможных раскрасок -- $2^4 = 16$
+
+    Порядок группы квадрата $|G| = 4$.
+
+    Тогда по Лемме Бернсайда количество раскрасок $r = \frac{2^4 \cdot 1 + 1 \cdot 2^1 + 2^1 \cdot 2 + 2^1 \cdot 1}{4} = \frac{24}{4} = 6$
+
+    Ответ: 6 раскрасок
+
+
+    \end{document}
+
